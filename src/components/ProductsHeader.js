@@ -1,19 +1,15 @@
 import { NavLink } from "react-router-dom";
 import styled from "./MainHeader.module.css";
+import SearchBar from "./SearchBar";
 
-const MainHeader = () => {
+const ProductsHeader = () => {
   return (
     <header className={styled.header}>
       <nav>
         <ul>
           <li>
-            <NavLink activeClassName={styled.active} to="/sign-in">
-              Sign in
-            </NavLink>
-          </li>
-          <li>
             <NavLink activeClassName={styled.active} to="/log-in">
-              Login
+              Logout
             </NavLink>
           </li>
         </ul>
@@ -22,4 +18,4 @@ const MainHeader = () => {
   );
 };
 
-export default MainHeader;
+export default ProductsHeader;

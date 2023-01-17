@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import styled from "./MainHeader.module.css";
+import styled from "./SignInLogInHeader.module.css";
 
-const MainHeader = () => {
+const SignInLogInHeader = () => {
   return (
     <header className={styled.header}>
       <nav>
@@ -22,4 +22,4 @@ const MainHeader = () => {
   );
 };
 
-export default MainHeader;
+export default SignInLogInHeader;

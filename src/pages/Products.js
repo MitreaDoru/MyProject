@@ -1,20 +1,43 @@
 import { Link } from "react-router-dom";
+import ProductsHeader from "../components/ProductsHeader";
+import SearchBar from "../components/SearchBar";
 const Products = () => {
+  let loadedMovies = [];
+  const sendRequest = async () => {
+    const response = await fetch(
+      "https://react-http-29f4a-default-rtdb.europe-west1.firebasedatabase.app/movies.json",
+      {
+        method: "GET",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Sending data failed");
+    }
+
+    const data = await response.json();
+
+    for (const key in data) {
+      loadedMovies.push({
+        id: key,
+        text: data[key].openingText,
+        releaseDate: data[key].releaseDate,
+        title: data[key].title,
+      });
+    }
+  };
+
+  try {
+    sendRequest();
+  } catch (error) {
+    console.log(error);
+  }
+
   return (
-    <section>
-      <h1>The Products Page</h1>
-      <ul>
-        <li>
-          <Link to="/products/p1">A book</Link>
-        </li>
-        <li>
-          <Link to="/products/p2">A Carpet</Link>
-        </li>
-        <li>
-          <Link to="/products/p3">Online Course</Link>
-        </li>
-      </ul>
-    </section>
+    <div>
+      <ProductsHeader />
+      <SearchBar />
+    </div>
   );
 };
 
